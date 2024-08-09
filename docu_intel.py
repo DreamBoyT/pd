@@ -45,6 +45,12 @@ patent_profanity_words = [
     "valuable", "very", "vital", "vitally", "white hat", "white list", "whitehat", "whitelist", "widest", "worst"  
 ]  
   
+# Function to clean text  
+def clean_text(text):  
+    if text is None:  
+        return ""  
+    return ''.join(c for c in text if c.isprintable())  
+  
 # Function to extract text and title from ppt slides  
 def extract_text_and_title_from_ppt(ppt_file):  
     prs = Presentation(ppt_file)  
@@ -55,9 +61,9 @@ def extract_text_and_title_from_ppt(ppt_file):
         for shape in slide.shapes:  
             if hasattr(shape, "text"):  
                 if shape == slide.shapes.title:  
-                    slide_title = shape.text  
+                    slide_title = clean_text(shape.text)  
                 else:  
-                    slide_text.append(shape.text)  
+                    slide_text.append(clean_text(shape.text))  
         slides_data.append((slide_title, "\n".join(slide_text)))  
     return slides_data  
   
@@ -67,25 +73,25 @@ def generate_explanation(slide_text):
         input_variables=["slide_text"],  
         template="""  
         Slide Content: {slide_text}  
-  
+          
         Aspects of the present disclosure may include insights extracted from the above slide content. The information should be delivered directly and engagingly. Avoid phrases like 'The slide presents,' 'discusses,' 'outlines,' or 'content.' The explanation should be formatted as paragraphs, without line breaks or bullet points, and must be semantically meaningful.  
-  
+          
         The text should adhere to the following style guidelines:  
         1. Remove all listed profanity words.  
         2. Use passive voice.  
         3. Use conditional and tentative language, such as "may include," "in some aspects," and "aspects of the present disclosure."  
         4. Replace "Million" with "1,000,000" and "Billion" with "1,000,000,000".  
-        5. Do not use adjectives, superlatives, or any terms that imply absolute certainty.
-        6. Initiate sentences using the most suitable introductory phrase that aligns with the given context:
-             - "Aspects of the present disclosure"
-             - "Wireless communication networks"
-             - "These multiple access technologies"
-             - "In a wireless communication network,"
-             - "The following presents"
-             - "To the accomplishment of the foregoing and related ends,"
-             - "The detailed description set forth below"
-             - "By way of example"
-             - "Accordingly"  
+        5. Do not use adjectives, superlatives, or any terms that imply absolute certainty.  
+        6. Initiate sentences using the most suitable introductory phrase that aligns with the given context:  
+            - "Aspects of the present disclosure"  
+            - "Wireless communication networks"  
+            - "These multiple access technologies"  
+            - "In a wireless communication network,"  
+            - "The following presents"  
+            - "To the accomplishment of the foregoing and related ends,"  
+            - "The detailed description set forth below"  
+            - "By way of example"  
+            - "Accordingly"  
           
         It is crucial to strictly adhere to the above guidelines to ensure the highest quality and most accurate output.  
         """  
