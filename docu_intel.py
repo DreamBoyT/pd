@@ -75,7 +75,17 @@ def generate_explanation(slide_text):
         2. Use passive voice.  
         3. Use conditional and tentative language, such as "may include," "in some aspects," and "aspects of the present disclosure."  
         4. Replace "Million" with "1,000,000" and "Billion" with "1,000,000,000".  
-        5. Avoid using adjectives, superlatives, or any terms that imply absolute certainty.  
+        5. Do not use adjectives, superlatives, or any terms that imply absolute certainty.
+        6. Initiate sentences using the most suitable introductory phrase that aligns with the given context:
+             - "Aspects of the present disclosure"
+             - "Wireless communication networks"
+             - "These multiple access technologies"
+             - "In a wireless communication network,"
+             - "The following presents"
+             - "To the accomplishment of the foregoing and related ends,"
+             - "The detailed description set forth below"
+             - "By way of example"
+             - "Accordingly"  
           
         It is crucial to strictly adhere to the above guidelines to ensure the highest quality and most accurate output.  
         """  
