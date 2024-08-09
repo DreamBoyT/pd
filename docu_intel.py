@@ -75,7 +75,9 @@ def generate_explanation(slide_text):
         2. Use passive voice.  
         3. Use conditional and tentative language, such as "may include," "in some aspects," and "aspects of the present disclosure."  
         4. Replace "Million" with "1,000,000" and "Billion" with "1,000,000,000".  
-        5. Do NOT use adjectives, superlatives, or any terms that imply absolute certainty.  
+        5. Avoid using adjectives, superlatives, or any terms that imply absolute certainty.  
+          
+        It is crucial to strictly adhere to the above guidelines to ensure the highest quality and most accurate output.  
         """  
     )  
     prompt = prompt_template.format(slide_text=slide_text)  
