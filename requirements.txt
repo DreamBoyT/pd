@@ -18,3 +18,6 @@ tenacity
 Pillow
 PyMuPDF
 python-pptx
+docx2txt
+pylatexenc
+win32com
